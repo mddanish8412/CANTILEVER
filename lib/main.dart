@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:newsxo/pages/home_page.dart';
 import 'package:newsxo/pages/starting_page.dart';
 
 void main() {
@@ -19,6 +18,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black38,
           primarySwatch: Colors.orange,
         ),
-        home: StartingPage());
+        debugShowCheckedModeBanner: false,
+        home: const StartingPage());
   }
 }

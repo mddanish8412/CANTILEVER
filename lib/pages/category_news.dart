@@ -39,7 +39,7 @@ class _CategoryNewsState extends State<CategoryNews> {
         backgroundColor: Colors.transparent,
         title:
             Text(widget.name,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.orange,
                     fontWeight: FontWeight.bold,
                     fontSize: 22)),
@@ -99,13 +99,13 @@ class ShowCategory extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5.0,
             ),
             Text(
               title,
               maxLines: 2,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold),

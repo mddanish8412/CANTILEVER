@@ -10,7 +10,7 @@ class ShowCategoryNews{
 
   Future<void> getCategoriesNews(String category)async{
     String url=
-        "https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=54145bc9681c42de9a6cc831aa90502b";
+    "https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=a5066be00dea4e6ebe1bc7df98f49288";
     var response = await http.get(Uri.parse(url));
 
 

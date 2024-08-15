@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("News",
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold,
                     fontSize: 22)),
             Text(
-              "Xo",
+              "Pro",
               style: TextStyle(
                   color: Colors.orange,
                   fontWeight: FontWeight.bold,
@@ -78,147 +78,143 @@ class _HomePageState extends State<HomePage> {
         elevation: 0.0,
       ),
       body: _loading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              child: Container(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10.0),
-                        height: 70,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: categories.length,
-                            itemBuilder: (context, index) {
-                              return CategoryTile(
-                                image: categories[index].images,
-                                categoryName: categories[index].categoryName,
-                              );
-                            }),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Breaking News!",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            AllNews(news: "Breaking")));
-                              },
-                              child: Text(
-                                "View All  >",
-                                style: TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      loading2
-                          ? Center(child: CircularProgressIndicator())
-                          : CarouselSlider.builder(
-                              itemCount: 5,
-                              itemBuilder: (context, index, realIndex) {
-                                String? res = sliders[index].urlToImage;
-                                String? res1 = sliders[index].title;
-                                return buildImage(res!, index, res1!);
-                              },
-                              options: CarouselOptions(
-                                  height: 250,
-                                  autoPlay: true,
-                                  enlargeCenterPage: true,
-                                  enlargeStrategy:
-                                      CenterPageEnlargeStrategy.height,
-                                  onPageChanged: (index, reason) {
-                                    setState(() {
-                                      activeIndex = index;
-                                    });
-                                  })),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Center(
-                          child: buildIndicator(
-                        carouselController: _carouselController,
-                      )),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Trending News!",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            GestureDetector(onTap: () {
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 10.0),
+                      height: 70,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: categories.length,
+                          itemBuilder: (context, index) {
+                            return CategoryTile(
+                              image: categories[index].images,
+                              categoryName: categories[index].categoryName,
+                            );
+                          }),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Breaking News!",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          GestureDetector(
+                            onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          AllNews(news: "Trending")));
+                                          AllNews(news: "Breaking")));
                             },
-                              child: Text(
-                                "View All  >",
-                                style: TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16),
-                              ),
+                            child: const Text(
+                              "View All  >",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 7.0,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    loading2
+                        ? Center(child: CircularProgressIndicator())
+                        : CarouselSlider.builder(
+                            itemCount: 5,
+                            itemBuilder: (context, index, realIndex) {
+                              String? res = sliders[index].urlToImage;
+                              String? res1 = sliders[index].title;
+                              return buildImage(res!, index, res1!);
+                            },
+                            options: CarouselOptions(
+                                height: 250,
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                enlargeStrategy:
+                                    CenterPageEnlargeStrategy.height,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    activeIndex = index;
+                                  });
+                                })),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                        child: buildIndicator(
+                      carouselController: _carouselController,
+                    )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Trending News!",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          GestureDetector(onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AllNews(news: "Trending")));
+                          },
+                            child: const Text(
+                              "View All  >",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemCount: articles.length,
-                            itemBuilder: ((context, index) {
-                              return BlogTile(
-                                  url: articles[index].url!,
-                                  desc: articles[index].description!,
-                                  imageUrl: articles[index].urlToImage!,
-                                  title: articles[index].title!);
-                            })),
-                      )
-                    ]),
-              ),
+                    ),
+                    const SizedBox(
+                      height: 7.0,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(),
+                        itemCount: articles.length,
+                        itemBuilder: ((context, index) {
+                          return BlogTile(
+                              url: articles[index].url!,
+                              desc: articles[index].description!,
+                              imageUrl: articles[index].urlToImage!,
+                              title: articles[index].title!);
+                        }))
+                  ]),
             ),
     );
   }
 
   Widget buildImage(String images, int index, String name) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 5.0),
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Stack(children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
@@ -234,14 +230,14 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: 10.0),
             margin: EdgeInsets.only(top: 170.0),
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.black26,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20))),
             child: Text(
               name,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold),
@@ -256,7 +252,7 @@ class _HomePageState extends State<HomePage> {
         onDotClicked: (index) {
           carouselController.animateToPage(index);
         },
-        effect: ScaleEffect(
+        effect: const ScaleEffect(
             activeDotColor: Colors.orange, dotWidth: 13, dotHeight: 13),
       );
 }
@@ -275,7 +271,7 @@ class CategoryTile extends StatelessWidget {
                 builder: (context) => CategoryNews(name: categoryName)));
       },
       child: Container(
-        margin: EdgeInsets.only(right: 16.0),
+        margin: const EdgeInsets.only(right: 16.0),
         child: Stack(children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
@@ -296,7 +292,7 @@ class CategoryTile extends StatelessWidget {
             child: Center(
               child: Text(
                 categoryName,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.bold),
@@ -353,7 +349,7 @@ class BlogTile extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5.0,
                   ),
                   Column(
@@ -363,7 +359,7 @@ class BlogTile extends StatelessWidget {
                         child: Text(
                           title,
                           maxLines: 2,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
                               fontSize: 17),
@@ -372,12 +368,12 @@ class BlogTile extends StatelessWidget {
                       const SizedBox(
                         height: 7.0,
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width / 1.7,
                         child: Text(
                           desc,
                           maxLines: 3,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white38,
                               fontWeight: FontWeight.w500,
                               fontSize: 16),
